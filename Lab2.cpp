@@ -7,6 +7,7 @@ int factorial(int n);
 float aproximarExp(int n,float x);
 void imprimeCaracteristicasTrapezoide(float[],float[],float[],float[]);
 float alturaTriangulo(float, float,float[]);
+float areaTrapezoide(float[],float,float[],float);
 
 int main(){
 	int opcion;
@@ -132,8 +133,9 @@ void imprimeCaracteristicasTrapezoide(float a[],float b[],float c[],float d[]){
         cout<<"Altura 2: "<<alturaTriangulo(semiPerimetroT2,triangulo2[1],triangulo2)<<endl;
         cout<<"Altura 3: "<<alturaTriangulo(semiPerimetroT2,triangulo2[2],triangulo2)<<endl;	
 
+	cout<<endl<<"El área del trapezoide es: ";
+	cout<<areaTrapezoide(triangulo1,semiPerimetroT1,triangulo2,semiPerimetroT2);
 	cout<<endl;
-	
 }
 
 float alturaTriangulo(float semiperimetro,float lado,float triangulo[]){
