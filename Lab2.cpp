@@ -123,19 +123,28 @@ void imprimeCaracteristicasTrapezoide(float a[],float b[],float c[],float d[]){
 	cout<<endl;
 	cout<<"Las alturas del triángulo 1 son: "<<endl;
 	cout<<"Altura 1: "<<alturaTriangulo(semiPerimetroT1,triangulo1[0],triangulo1)<<endl;
-	cout<<"Altura 2: "<<alturaTriangulo(semiPerimetroT1,triangulo1[0],triangulo1)<<endl;
-	cout<<"Altura 3: "<<alturaTriangulo(semiPerimetroT1,triangulo1[0],triangulo1)<<endl;
+	cout<<"Altura 2: "<<alturaTriangulo(semiPerimetroT1,triangulo1[1],triangulo1)<<endl;
+	cout<<"Altura 3: "<<alturaTriangulo(semiPerimetroT1,triangulo1[2],triangulo1)<<endl;
 	
 	cout<<endl;
 	cout<<"Las alturas del triángulo 2 son: "<<endl;
         cout<<"Altura 1: "<<alturaTriangulo(semiPerimetroT2,triangulo2[0],triangulo2)<<endl;
-        cout<<"Altura 2: "<<alturaTriangulo(semiPerimetroT2,triangulo2[0],triangulo2)<<endl;
-        cout<<"Altura 3: "<<alturaTriangulo(semiPerimetroT2,triangulo2[0],triangulo2)<<endl;	
+        cout<<"Altura 2: "<<alturaTriangulo(semiPerimetroT2,triangulo2[1],triangulo2)<<endl;
+        cout<<"Altura 3: "<<alturaTriangulo(semiPerimetroT2,triangulo2[2],triangulo2)<<endl;	
+
+	cout<<endl;
+	
 }
 
 float alturaTriangulo(float semiperimetro,float lado,float triangulo[]){
 	float s=semiperimetro;
 	float h;
-	h=(2/lado)*sqrt((s-triangulo[0])*(s-triangulo[1])*(s-triangulo[2]));
+	h=(2/lado)*sqrt(s*(s-triangulo[0])*(s-triangulo[1])*(s-triangulo[2]));
 	return h;
+}
+
+float areaTrapezoide(float triangulo1[],float semip1,float triangulo2[],float semip2){
+	float Area1=0.5*triangulo1[2]*alturaTriangulo(semip1,triangulo1[2],triangulo1);
+	float Area2=0.5*triangulo2[2]*alturaTriangulo(semip2,triangulo2[2],triangulo2);
+	return Area1+Area2;
 }
