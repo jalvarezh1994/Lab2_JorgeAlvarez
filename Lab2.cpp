@@ -6,6 +6,7 @@ using namespace std;
 int factorial(int n);
 float aproximarExp(int n,float x);
 void imprimeCaracteristicasTrapezoide(float[],float[],float[],float[]);
+float alturaTriangulo(float, float,float[]);
 
 int main(){
 	int opcion;
@@ -78,7 +79,7 @@ int factorial(int n){
 
 float distancia(float punto1[],float punto2[]){
 	float distancia;
-	distancia=sqrt(pow(punto1[0]-punto2[0],2)+pow(punto1[1]-punto2[1],2));
+	distancia=sqrt(pow(punto2[0]-punto1[0],2)+pow(punto2[1]-punto1[1],2));
 	return distancia;
 }
 
@@ -111,7 +112,30 @@ void imprimeCaracteristicasTrapezoide(float a[],float b[],float c[],float d[]){
         cout<<triangulo2[1]<<endl;
         cout<<triangulo2[2]<<endl;
 
-	semiPerimetroT1=(triangulo1[0]+triangulo1[1]+triangulo1[2])/2;
-	semiPerimetroT2=(triangulo2[0]+triangulo2[1]+triangulo2[2])/2;
-	cout<<"Semiperimetro triángulo 1: "<<
+	float semiPerimetroT1=(triangulo1[0]+triangulo1[1]+triangulo1[2])/2;
+	float semiPerimetroT2=(triangulo2[0]+triangulo2[1]+triangulo2[2])/2;
+	cout<<endl;
+	cout<<"Semiperimetro triángulo 1: "<<semiPerimetroT1<<endl;
+	cout<<"Semiperimetro triángulo 2: "<<semiPerimetroT2<<endl;
+	cout<<"Perímetro triángulo 1: "<<semiPerimetroT1*2<<endl;
+	cout<<"Perímetro triángulo 2: "<<semiPerimetroT1*2<<endl;
+	
+	cout<<endl;
+	cout<<"Las alturas del triángulo 1 son: "<<endl;
+	cout<<"Altura 1: "<<alturaTriangulo(semiPerimetroT1,triangulo1[0],triangulo1)<<endl;
+	cout<<"Altura 2: "<<alturaTriangulo(semiPerimetroT1,triangulo1[0],triangulo1)<<endl;
+	cout<<"Altura 3: "<<alturaTriangulo(semiPerimetroT1,triangulo1[0],triangulo1)<<endl;
+	
+	cout<<endl;
+	cout<<"Las alturas del triángulo 2 son: "<<endl;
+        cout<<"Altura 1: "<<alturaTriangulo(semiPerimetroT2,triangulo2[0],triangulo2)<<endl;
+        cout<<"Altura 2: "<<alturaTriangulo(semiPerimetroT2,triangulo2[0],triangulo2)<<endl;
+        cout<<"Altura 3: "<<alturaTriangulo(semiPerimetroT2,triangulo2[0],triangulo2)<<endl;	
+}
+
+float alturaTriangulo(float semiperimetro,float lado,float triangulo[]){
+	float s=semiperimetro;
+	float h;
+	h=(2/lado)*sqrt((s-triangulo[0])*(s-triangulo[1])*(s-triangulo[2]));
+	return h;
 }
