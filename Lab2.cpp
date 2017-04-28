@@ -8,6 +8,7 @@ float aproximarExp(int n,float x);
 void imprimeCaracteristicasTrapezoide(float[],float[],float[],float[]);
 float alturaTriangulo(float, float,float[]);
 float areaTrapezoide(float[],float,float[],float);
+bool validarPuntos(float[],float[],float[],float[]);
 
 int main(){
 	int opcion;
@@ -49,7 +50,10 @@ int main(){
                         cin>>d[0];
 			cout<<"Ingrese Dy: ";
                         cin>>d[1];
-
+			if(validarPuntos(a,b,c,d)){
+				cout<<"No son puntos válidos"<<endl;
+				break;
+			}
 			imprimeCaracteristicasTrapezoide(a,b,c,d);
 			
 		}
@@ -149,4 +153,21 @@ float areaTrapezoide(float triangulo1[],float semip1,float triangulo2[],float se
 	float Area1=0.5*triangulo1[2]*alturaTriangulo(semip1,triangulo1[2],triangulo1);
 	float Area2=0.5*triangulo2[2]*alturaTriangulo(semip2,triangulo2[2],triangulo2);
 	return Area1+Area2;
+}
+
+bool validarPuntos(float a[],float b[],float c[],float d[]){
+	bool esValido=true;
+	if(a==b){
+		esValido=false;}
+	if(a==c){
+                esValido=false;}
+	if(a==d){
+                esValido=false;}
+	if(b==c){
+                esValido=false;}
+	if(b==d){
+                esValido=false;}
+	if(c==d){
+                esValido=false;}
+	return !esValido;
 }
