@@ -5,6 +5,7 @@ using namespace std;
 
 int factorial(int n);
 float aproximarExp(int n,float x);
+void imprimeCaracteristicasTrapezoide(float[],float[],float[],float[]);
 
 int main(){
 	int opcion;
@@ -25,6 +26,30 @@ int main(){
 			cout<<"La aproximación queda: "<<aproximarExp(n,x)<<endl;
 		}
 		case 2:{
+			float a[2],b[2],c[2],d[2];
+		cout<<"Ingrese los puntos del trapezoide de la forma."<<endl;
+			cout<<"D C"<<endl;
+			cout<<"A B"<<endl;
+			
+			cout<<"Ingrese Ax: ";
+			cin>>a[0];
+			cout<<"Ingrese Ay: ";
+			cin>>a[1];
+			cout<<"Ingrese Bx: ";
+                        cin>>b[0];
+			cout<<"Ingrese By: ";
+                        cin>>b[1];
+			cout<<"Ingrese Cx: ";
+                        cin>>c[0];
+			cout<<"Ingrese Cy: ";
+                        cin>>c[1];
+			cout<<"Ingrese Dx: ";
+                        cin>>d[0];
+			cout<<"Ingrese Dy: ";
+                        cin>>d[1];
+
+			imprimeCaracteristicasTrapezoide(a,b,c,d);
+			
 		}
 		case 3:{
 		}
@@ -49,4 +74,44 @@ int factorial(int n){
 		resultado=i*resultado;	
 	}
 	return resultado;
+}
+
+float distancia(float punto1[],float punto2[]){
+	float distancia;
+	distancia=sqrt(pow(punto1[0]-punto2[0],2)+pow(punto1[1]-punto2[1],2));
+	return distancia;
+}
+
+void imprimeCaracteristicasTrapezoide(float a[],float b[],float c[],float d[]){
+	cout<<endl;
+	cout<<"Los puntos son: "<<endl;
+	cout<<"("<<a[0]<<","<<a[1]<<")"<<endl;
+	cout<<"("<<b[0]<<","<<b[1]<<")"<<endl;
+	cout<<"("<<c[0]<<","<<c[1]<<")"<<endl;
+	cout<<"("<<d[0]<<","<<d[1]<<")"<<endl;
+	
+	cout<<endl;
+	cout<<"Las distancias de los puntos son: "<<endl;
+	cout<<"La distancia AB es: "<<distancia(a,b)<<endl;
+	cout<<"La distancia BC es: "<<distancia(b,c)<<endl;
+	cout<<"La distancia CD es: "<<distancia(c,d)<<endl;
+	cout<<"La distancia DA es: "<<distancia(d,a)<<endl;
+	
+	float triangulo1[]={distancia(d,a),distancia(a,b),distancia(b,d)};
+	float triangulo2[]={distancia(b,c),distancia(c,d),distancia(b,d)};
+	cout<<endl;
+	cout<<"Los lados del triángulo 1 son"<<endl;
+	cout<<triangulo1[0]<<endl;
+	cout<<triangulo1[1]<<endl;
+	cout<<triangulo1[2]<<endl;
+
+	cout<<endl;
+        cout<<"Los lados del triángulo 2 son"<<endl;
+        cout<<triangulo2[0]<<endl;
+        cout<<triangulo2[1]<<endl;
+        cout<<triangulo2[2]<<endl;
+
+	semiPerimetroT1=(triangulo1[0]+triangulo1[1]+triangulo1[2])/2;
+	semiPerimetroT2=(triangulo2[0]+triangulo2[1]+triangulo2[2])/2;
+	cout<<"Semiperimetro triángulo 1: "<<
 }
