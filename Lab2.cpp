@@ -12,54 +12,56 @@ bool validarPuntos(float[],float[],float[],float[]);
 
 int main(){
 	int opcion;
-	cout<<"Menú"<<endl;
-	cout<<"1. Ejercicio 1"<<endl;
-	cout<<"2. Ejercicio 2"<<endl;
-	cout<<"3. Salir"<<endl;
-	cout<<"Ingrese una opción: ";
-	cin>>opcion;
-	switch(opcion){
-		case 1:{
-			float x;
-			int n;
-			cout<<"Ingrese el exponente: ";
-			cin>>x;
-			cout<<"Ingrese la cantidad de términos para la aproximación: ";
-			cin>>n;
-			cout<<"La aproximación queda: "<<aproximarExp(n,x)<<endl;
-		}
-		case 2:{
-			float a[2],b[2],c[2],d[2];
-		cout<<"Ingrese los puntos del trapezoide de la forma."<<endl;
-			cout<<"D C"<<endl;
-			cout<<"A B"<<endl;
+	do{
+		cout<<"Menú"<<endl;
+		cout<<"1. Ejercicio 1"<<endl;
+		cout<<"2. Ejercicio 2"<<endl;
+		cout<<"3. Salir"<<endl;
+		cout<<"Ingrese una opción: ";
+		cin>>opcion;
+		switch(opcion){
+			case 1:{
+				float x;
+				int n;
+				cout<<"Ingrese el exponente: ";
+				cin>>x;
+				cout<<"Ingrese la cantidad de términos para la aproximación: ";
+				cin>>n;
+				cout<<"La aproximación queda: "<<aproximarExp(n,x)<<endl;
+			}
+			case 2:{
+				float a[2],b[2],c[2],d[2];
+				cout<<"Ingrese los puntos del trapezoide de la forma."<<endl;
+				cout<<"D C"<<endl;
+				cout<<"A B"<<endl;
 			
-			cout<<"Ingrese Ax: ";
-			cin>>a[0];
-			cout<<"Ingrese Ay: ";
-			cin>>a[1];
-			cout<<"Ingrese Bx: ";
-                        cin>>b[0];
-			cout<<"Ingrese By: ";
-                        cin>>b[1];
-			cout<<"Ingrese Cx: ";
-                        cin>>c[0];
-			cout<<"Ingrese Cy: ";
-                        cin>>c[1];
-			cout<<"Ingrese Dx: ";
-                        cin>>d[0];
-			cout<<"Ingrese Dy: ";
-                        cin>>d[1];
-			if(validarPuntos(a,b,c,d)){
-				cout<<"No son puntos válidos"<<endl;
+				cout<<"Ingrese Ax: ";
+				cin>>a[0];
+				cout<<"Ingrese Ay: ";
+				cin>>a[1];
+				cout<<"Ingrese Bx: ";
+                        	cin>>b[0];
+				cout<<"Ingrese By: ";
+        	                cin>>b[1];
+				cout<<"Ingrese Cx: ";
+                        	cin>>c[0];
+				cout<<"Ingrese Cy: ";
+        	                cin>>c[1];
+				cout<<"Ingrese Dx: ";
+                	        cin>>d[0];
+				cout<<"Ingrese Dy: ";
+	                        cin>>d[1];
+				if(validarPuntos(a,b,c,d)==false){
+					cout<<"No son puntos válidos"<<endl;
+				}else{
+				imprimeCaracteristicasTrapezoide(a,b,c,d);
+				}
+			}
+			case 3:{
 				break;
 			}
-			imprimeCaracteristicasTrapezoide(a,b,c,d);
-			
 		}
-		case 3:{
-		}
-	}
+	}while(opcion!=3);
 	return 0;
 }
 
@@ -157,17 +159,17 @@ float areaTrapezoide(float triangulo1[],float semip1,float triangulo2[],float se
 
 bool validarPuntos(float a[],float b[],float c[],float d[]){
 	bool esValido=true;
-	if(a==b){
+	if(a[0]==b[0]&&a[1]==b[1]){
 		esValido=false;}
-	if(a==c){
+	if(a[0]==c[0]&&a[1]==c[1]){
                 esValido=false;}
-	if(a==d){
+	if(a[0]==d[0]&&a[1]==d[1]){
                 esValido=false;}
-	if(b==c){
+	if(b[0]==c[0]&&b[1]==c[1]){
                 esValido=false;}
-	if(b==d){
+	if(b[0]==d[0]&&b[1]==d[1]){
                 esValido=false;}
-	if(c==d){
+	if(c[0]==d[0]&&c[1]==d[1]){
                 esValido=false;}
-	return !esValido;
+	return esValido;
 }
